@@ -77,7 +77,7 @@ format = "[[ $symbol $branch ](fg:crust bg:yellow)]($style)"
 
 [git_status]
 style = "bg:yellow"
-format = "[[$all_status ](fg:crust bg:yellow)]($style)"
+format = "[([$all_status ](fg:crust bg:yellow))]($style)"
 ignore_submodules = true
 use_git_executable = true
 
