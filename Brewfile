@@ -8,6 +8,7 @@ brew 'bkt'
 brew 'starship'
 brew 'stow'
 brew 'thefuck'
+brew 'tmux'
 
 # Neovim
 brew 'nvim'

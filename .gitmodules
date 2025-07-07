@@ -4,3 +4,6 @@
 [submodule ".config/zsh/zsh-syntax-highlighting"]
 	path = .config/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule ".config/tmux/tpm"]
+	path = .config/tmux/tpm
+	url = git@github.com:tmux-plugins/tpm.git

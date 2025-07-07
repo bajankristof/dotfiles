@@ -1,4 +1,5 @@
 theme = "catppuccin-macchiato"
+command = ~/.config/ghostty/tmux
 
 cursor-style = bar
 cursor-style-blink = true
@@ -21,11 +22,22 @@ adjust-cursor-thickness = 3
 macos-icon = holographic
 macos-auto-secure-input = true
 macos-secure-input-indication = true
-macos-titlebar-style = transparent
+macos-titlebar-style = hidden
 
 quick-terminal-position = bottom
 quick-terminal-screen = mouse
 quick-terminal-autohide = false
 
 keybind = global:super+shift+t=toggle_quick_terminal
-#keybind = super+k=text:\x0c
+keybind = super+k=text:\x0c
+keybind = super+t=text:\x00c
+keybind = super+w=text:\x00x
+keybind = super+1=text:\x001
+keybind = super+2=text:\x002
+keybind = super+3=text:\x003
+keybind = super+4=text:\x004
+keybind = super+5=text:\x005
+keybind = super+6=text:\x006
+keybind = super+7=text:\x007
+keybind = super+8=text:\x008
+keybind = super+9=text:\x009
