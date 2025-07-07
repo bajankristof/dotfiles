@@ -21,6 +21,8 @@ adjust-cursor-thickness = 3
 macos-auto-secure-input = true
 macos-secure-input-indication = true
 macos-titlebar-style = transparent
+#background-opacity = 0.98
+#background-blur = true
 
 quick-terminal-position = bottom
 quick-terminal-screen = mouse

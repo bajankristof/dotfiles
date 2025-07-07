@@ -9,6 +9,7 @@ return {
     local fzf = require('fzf-lua')
 
     fzf.setup {
+      fzf_colors = true,
       grep = {
         rg_glob = true,
       },
