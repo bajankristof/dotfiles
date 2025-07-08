@@ -12,6 +12,7 @@ font-size = 15
 window-padding-balance = true
 window-padding-x = 8
 window-title-font-family = "JetBrainsMono NFM Regular"
+window-new-tab-position = "end"
 maximize = true
 
 adjust-cell-height = 30%
