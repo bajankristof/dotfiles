@@ -1,4 +1,4 @@
-function gmb() {
+function gmb {
   git rev-parse --git-dir &>/dev/null || return
 
   local ref
@@ -11,6 +11,17 @@ function gmb() {
 
   echo master
   return 1
+}
+
+function gff {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
 }
 
 alias g='git'
@@ -58,6 +69,7 @@ alias gst='git status'
 alias gsta='git stash'
 alias gstc='git stash clear'
 alias gstd='git stash drop'
+alias gsti='git stash -p'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gsua='git submodule add'
