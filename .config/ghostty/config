@@ -10,7 +10,6 @@ font-family-italic = "JetBrainsMono NFM Italic"
 font-size = 15
 
 window-padding-balance = true
-window-padding-x = 8
 window-title-font-family = "JetBrainsMono NFM Regular"
 window-new-tab-position = "end"
 maximize = true
@@ -22,8 +21,6 @@ adjust-cursor-thickness = 3
 macos-auto-secure-input = true
 macos-secure-input-indication = true
 macos-titlebar-style = transparent
-#background-opacity = 0.98
-#background-blur = true
 
 quick-terminal-position = bottom
 quick-terminal-screen = mouse
