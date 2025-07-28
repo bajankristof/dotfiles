@@ -27,6 +27,7 @@ brew 'hashicorp/tap/terraform'
 brew 'hashicorp/tap/terraform-ls'
 brew 'luarocks'
 brew 'lua-language-server'
+brew 'opencode'
 
 # Casks
 cask 'ghostty'
