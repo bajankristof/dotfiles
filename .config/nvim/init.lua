@@ -27,6 +27,7 @@ vim.o.smartcase = true
 -- Set highlight on search, but clear on pressing escape in normal mode
 vim.o.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
 
 -- Sync clipboard with system clipboard
 vim.schedule(function()

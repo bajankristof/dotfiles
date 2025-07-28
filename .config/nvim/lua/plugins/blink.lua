@@ -6,6 +6,7 @@ return {
   ---@type blink.cmp.Config
   opts = {
     keymap = { preset = 'default' },
+    signature = { enabled = true },
     appearance = {
       nerd_font_variant = 'mono',
     },
