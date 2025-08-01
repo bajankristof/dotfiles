@@ -4,10 +4,8 @@ tap 'hashicorp/tap'
 # Shell
 brew 'asdf'
 brew 'bash'
-brew 'bkt'
 brew 'starship'
 brew 'stow'
-brew 'thefuck'
 
 # Neovim
 brew 'nvim'
