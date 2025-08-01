@@ -18,6 +18,7 @@ adjust-cell-height = 30%
 adjust-cursor-height = -4
 adjust-cursor-thickness = 3
 
+macos-icon = holographic
 macos-auto-secure-input = true
 macos-secure-input-indication = true
 macos-titlebar-style = transparent
