@@ -31,11 +31,9 @@ end
 
 return {
   'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
-  opts = {},
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   lazy = false,
+  after = 'nvim-web-devicons',
   config = function()
     local oil = require('oil')
     local refresh = require('oil.actions').refresh

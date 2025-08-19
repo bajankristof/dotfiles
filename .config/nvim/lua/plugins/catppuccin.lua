@@ -3,7 +3,6 @@ return {
   config = function ()
     local catppuccin = require('catppuccin')
 
-    --catppuccin.setup { flavour = 'mocha' }
     catppuccin.setup {
       flavour = 'macchiato',
       integrations = {

@@ -1,10 +1,8 @@
--- go install golang.org/x/tools/gopls@latest
-
 local mod_cache = nil
 
 ---@param fname string
 ---@return string?
-local function get_root(fname)
+local function get_root_dir(fname)
   if mod_cache and fname:sub(1, #mod_cache) == mod_cache then
     local clients = vim.lsp.get_clients { name = 'gopls' }
     if #clients > 0 then
@@ -22,7 +20,7 @@ return {
     -- see: https://github.com/neovim/nvim-lspconfig/issues/804
     local fname = vim.api.nvim_buf_get_name(bufnr)
     if mod_cache then
-      on_dir(get_root(fname))
+      on_dir(get_root_dir(fname))
       return
     end
 
@@ -32,11 +30,11 @@ return {
         if output.stdout then
           mod_cache = vim.trim(output.stdout)
         end
-        on_dir(get_root(fname))
+        on_dir(get_root_dir(fname))
       else
         vim.api.nvim_echo({
-          { string.format('Error detected while running gopls (code %d)\n', output.code) 'ErrorMsg' },
-          { string.format('%s\n', output.stderr),                                     'WarningMsg' },
+          { string.format('Error detected while running gopls (code %d)\n', output.code), 'ErrorMsg' },
+          { string.format('%s\n', output.stderr), 'WarningMsg' },
         }, true, {})
       end
     end)

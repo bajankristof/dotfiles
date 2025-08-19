@@ -27,13 +27,6 @@ stow . -t ~
 green 'done'
 echo ''
 
-blue 'Installing Go language server...'
-if ! command -v gopls &> /dev/null; then
-  go install golang.org/x/tools/gopls@latest
-fi
-green 'done'
-echo ''
-
 blue 'Installing TypeScript language server...'
 asdfl nodejs npm i -g @typescript/native-preview > /dev/null 2>&1
 if [ $? -eq 0 ]; then

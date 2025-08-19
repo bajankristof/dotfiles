@@ -12,11 +12,16 @@ return {
 
       treesitter.install {
         'bash',
+        'css',
         'go',
         'hcl',
+        'html',
         'javascript',
         'lua',
+        'make',
         'ruby',
+        'scss',
+        'sql',
         'terraform',
         'tsx',
         'typescript',
