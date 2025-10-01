@@ -1,2 +1,6 @@
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-a>', '^', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-a>', '<C-o>^', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-e>', '$', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-e>', '<C-o>$', { noremap = true, silent = true })

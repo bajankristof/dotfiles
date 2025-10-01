@@ -14,6 +14,9 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- Decrease update time to fire CursorHold events faster
+vim.o.updatetime = 300
+
 -- Hide command line when not needed
 vim.o.cmdheight = 0
 

@@ -1,4 +1,4 @@
-theme = "catppuccin-macchiato"
+theme = "Catppuccin Macchiato"
 
 cursor-style = bar
 cursor-style-blink = true
@@ -9,10 +9,11 @@ font-family-bold-italic = "JetBrainsMono NFM Bold Italic"
 font-family-italic = "JetBrainsMono NFM Italic"
 font-size = 15
 
+window-width = 9999
+window-height = 9999
 window-padding-balance = true
 window-title-font-family = "JetBrainsMono NFM Regular"
 window-new-tab-position = "end"
-maximize = true
 
 adjust-cell-height = 30%
 adjust-cursor-height = -4
@@ -29,3 +30,4 @@ quick-terminal-autohide = false
 
 keybind = global:super+shift+t=toggle_quick_terminal
 #keybind = super+k=text:\x0c
+keybind = shift+enter=text:\x1b\r

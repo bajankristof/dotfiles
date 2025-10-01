@@ -59,7 +59,7 @@ return {
           end
 
           local info = cache[dir]
-          if not info then
+          if not info or info[name] == nil then
             return dotfile
           end
 
