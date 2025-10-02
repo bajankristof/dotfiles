@@ -1,2 +1,2 @@
-vim.lsp.enable('ruby_lsp')
+vim.lsp.enable('rubyls')
 vim.treesitter.start()

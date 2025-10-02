@@ -35,6 +35,9 @@ brew 'terragrunt'
 brew 'yq'
 brew 'zoxide'
 
+# Libraries
+brew 'libyaml' # ruby-lsp dependency
+
 # Casks
 cask 'flutter'
 cask 'font-jetbrains-mono-nerd-font'

@@ -1,3 +1,3 @@
 vim.lsp.set_log_level('debug')
-vim.lsp.enable('terraform_ls')
+vim.lsp.enable('terraformls')
 vim.treesitter.start()
