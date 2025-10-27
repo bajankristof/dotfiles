@@ -2,7 +2,7 @@ local mod_cache = nil
 
 ---@param fname string
 ---@return string?
-local function get_root_dir(fname)
+local function find_root_dir(fname)
   if mod_cache and fname:sub(1, #mod_cache) == mod_cache then
     local clients = vim.lsp.get_clients { name = 'gopls' }
     if #clients > 0 then
@@ -10,17 +10,17 @@ local function get_root_dir(fname)
     end
   end
 
-  return vim.fs.root(fname, 'go.work') or vim.fs.root(fname, 'go.mod') or vim.fs.root(fname, '.git')
+  return vim.fs.root(fname, { 'go.mod', 'go.work', '.git' })
 end
 
 return {
   cmd = { 'gopls' },
   filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-  root_dir = function(bufnr, on_dir)
+  root_dir = function(bufnr, cb)
     -- see: https://github.com/neovim/nvim-lspconfig/issues/804
-    local fname = vim.api.nvim_buf_get_name(bufnr)
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
     if mod_cache then
-      on_dir(get_root_dir(fname))
+      cb(find_root_dir(bufname))
       return
     end
 
@@ -30,7 +30,7 @@ return {
         if output.stdout then
           mod_cache = vim.trim(output.stdout)
         end
-        on_dir(get_root_dir(fname))
+        cb(find_root_dir(bufname))
       else
         vim.api.nvim_echo({
           { string.format('Error detected while running gopls (code %d)\n', output.code), 'ErrorMsg' },

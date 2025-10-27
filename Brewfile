@@ -34,6 +34,7 @@ brew 'sqlc'
 brew 'terragrunt'
 brew 'yq'
 brew 'zoxide'
+brew 'dotnet'
 
 # Libraries
 brew 'libyaml' # ruby-lsp dependency

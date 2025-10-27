@@ -24,10 +24,9 @@ return {
     'typescriptreact',
     'vue',
   },
-  root_dir = function(bufnr, on_dir)
-    local fname = vim.api.nvim_buf_get_name(bufnr)
-    local root_dir = vim.fs.root(fname, { { 'package.json', 'biome.json' } })
-
+  root_dir = function(bufnr, cb)
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
+    local root_dir = vim.fs.root(bufname, { { 'package.json', 'biome.json' } })
     if not root_dir then
       return
     end
@@ -36,6 +35,6 @@ return {
       return
     end
 
-    on_dir(root_dir)
+    cb(root_dir)
   end,
 }

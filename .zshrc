@@ -36,6 +36,12 @@ for entry in $HOME/.config/zsh/^brew.zsh; do
   fi
 done
 
+if [[ -d $HOME/.zsh.d ]]; then
+  for entry in $HOME/.zsh.d/*.zsh; do
+    source $entry
+  done
+fi
+
 bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
