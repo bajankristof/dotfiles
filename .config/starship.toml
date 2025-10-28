@@ -116,12 +116,11 @@ vimcmd_replace_symbol = "[❮](bold fg:lavender)"
 vimcmd_visual_symbol = "[❮](bold fg:yellow)"
 
 [aws]
-symbol = " "
 style = "fg:text bg:mantle"
 format = """
 [(\
 [](fg:mantle)\
-$symbol $profile( $duration)\
+(  $profile( $duration))\
 [](fg:mantle)
 )]($style)"""
 
