@@ -26,7 +26,7 @@ local function refresh_diagnostics(client)
   local buffers = vim.lsp.get_buffers_by_client_id(client.id)
   for _, bufnr in ipairs(buffers) do
     if vim.api.nvim_buf_is_loaded(bufnr) then
-      client:request(vim.lsp.protocol.Methods.textDocument_diagnostic, {
+      client:request('textDocument/diagnostic', {
         textDocument = vim.lsp.util.make_text_document_params(bufnr)
       }, nil, bufnr)
     end
@@ -39,6 +39,7 @@ return {
     vim.fn.expand('~/.roslynls/Microsoft.CodeAnalysis.LanguageServer.dll'),
     '--stdio',
     '--logLevel',
+    -- 'Trace',
     'Information',
     '--extensionLogDirectory',
     vim.fn.expand('~/.roslynls/logs'),
@@ -104,18 +105,29 @@ return {
     ['workspace/projectInitializationComplete'] = function(_, _, ctx)
       local client = vim.lsp.get_client_by_id(ctx.client_id)
       if not client then
-        return
+        return vim.NIL
       end
 
       refresh_diagnostics(client)
+
+      return vim.NIL
+    end,
+    ['workspace/_roslyn_projectNeedsRestore'] = function(_, result, ctx)
+      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      if not client then
+        return vim.NIL
+      end
+
+      client:request('workspace/_roslyn_restore', result, function(error, _)
+        if error then
+          vim.notify(error.message, vim.log.levels.ERROR, { title = 'Roslyn LS' })
+        end
+      end)
+
+      return vim.NIL
     end,
   },
   capabilities = {
-    workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = false,
-      },
-    },
     textDocument = {
       diagnostic = {
         dynamicRegistration = true,
