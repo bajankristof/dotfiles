@@ -3,10 +3,7 @@ theme = "Catppuccin Macchiato"
 cursor-style = bar
 cursor-style-blink = true
 
-font-family = "JetBrainsMono NFM Regular"
-font-family-bold = "JetBrainsMono NFM Bold"
-font-family-bold-italic = "JetBrainsMono NFM Bold Italic"
-font-family-italic = "JetBrainsMono NFM Italic"
+font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 
 window-width = 9999
@@ -31,3 +28,5 @@ quick-terminal-autohide = false
 keybind = global:super+shift+t=toggle_quick_terminal
 #keybind = super+k=text:\x0c
 keybind = shift+enter=text:\x1b\r
+
+config-file = ?local.config

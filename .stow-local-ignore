@@ -1,7 +1,6 @@
 ^/\.git.*
 ^/\.stow-local-ignore
 ^/\.ruby-lsp
-^/Brewfile
-^/colors.zsh
-^/setmeup
+^/setup
+^/setmeup.zsh
 ^/README

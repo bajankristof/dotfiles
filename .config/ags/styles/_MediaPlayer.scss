@@ -1,0 +1,7 @@
+@use "theme";
+
+.MediaPlayer {
+  .artwork {
+    border-radius: theme.$border-radius;
+  }
+}

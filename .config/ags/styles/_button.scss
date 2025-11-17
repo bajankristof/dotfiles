@@ -1,0 +1,43 @@
+@use "colors";
+@use "theme";
+
+button {
+  border-radius: theme.$border-radius;
+  background: colors.$dark;
+  box-shadow: theme.glass-box-shadow(colors.$dark);
+  transition: filter 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  &.primary {
+    background: colors.$primary;
+    box-shadow: theme.glass-box-shadow(colors.$primary);
+  }
+
+  &.secondary {
+    background: colors.$secondary;
+    box-shadow: theme.glass-box-shadow(colors.$secondary);
+  }
+
+  &.info {
+    background: colors.$info;
+    box-shadow: theme.glass-box-shadow(colors.$info);
+  }
+
+  &.success {
+    background: colors.$success;
+    box-shadow: theme.glass-box-shadow(colors.$success);
+  }
+
+  &.warning {
+    background: colors.$warning;
+    box-shadow: theme.glass-box-shadow(colors.$warning);
+  }
+
+  &.danger {
+    background: colors.$danger;
+    box-shadow: theme.glass-box-shadow(colors.$danger);
+  }
+}

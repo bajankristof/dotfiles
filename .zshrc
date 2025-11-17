@@ -2,6 +2,7 @@
 
 export LANG='en_US.UTF-8'
 export CLICOLOR='auto'
+export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE='10000'
 export SAVEHIST='10000'
 
