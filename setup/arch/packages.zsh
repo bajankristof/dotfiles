@@ -17,7 +17,10 @@ export PACKAGES=(
   bluez-utils
 
   brightnessctl
+  cava
+  ddcutil
   networkmanager
+  playerctl
 
   # Essentials
   git
@@ -29,10 +32,10 @@ export PACKAGES=(
 
   # Hyprland
   hyprland
-  hyprpaper
   qt5-wayland
   qt6-wayland
   wl-clipboard
+  cliphist
   xdg-desktop-portal-hyprland
   xdg-desktop-portal-gtk
   adw-gtk-theme
@@ -40,13 +43,6 @@ export PACKAGES=(
   nemo
   slurp
   uwsm
-
-  # AGS
-  libgtop
-  dart-sass
-  gvfs
-  gtksourceview3
-  upower
 
   # Fonts
   noto-fonts-emoji
@@ -88,10 +84,10 @@ export PACKAGES=(
 export AUR_PACKAGES=(
   1password
   asdf-vm
-  aylurs-gtk-shell-git
   duckdb-bin
   google-chrome
-  libastal-meta
+  matugen-bin
+  noctalia-shell
   opencode-bin
   terraform-ls
   vicinae-bin

@@ -1,5 +1,6 @@
 {
     "closeOnFocusLoss": false,
+    "considerPreedit": false,
     "faviconService": "twenty",
     "font": {
         "normal": "JetBrainsMono Nerd Font Propo",
@@ -13,7 +14,7 @@
         "searchFiles": false
     },
     "theme": {
-        "name": "catppuccin-macchiato"
+        "name": "catppuccin-mocha"
     },
     "window": {
         "csd": true,
