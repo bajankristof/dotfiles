@@ -43,7 +43,7 @@
                     "followFocusedScreen": false,
                     "hideUnoccupied": false,
                     "id": "Workspace",
-                    "labelMode": "none"
+                    "labelMode": "index"
                 }
             ],
             "left": [

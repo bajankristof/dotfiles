@@ -40,6 +40,7 @@ zsh ../common/install.zsh
 blue 'Configuring services...'
 sudo systemctl enable bluetooth
 sudo systemctl enable NetworkManager
+sudo usermod -aG gamemode "$USER"
 green 'done'
 echo ''
 

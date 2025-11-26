@@ -3,7 +3,7 @@
 cd "${0:A:h}"
 
 source ../colors.zsh
-source ../../.config/zsh/asdf.zsh
+source ../../common/.config/zsh/asdf.zsh
 
 blue 'Installing TypeScript language server...'
 asdfl nodejs npm i -g @typescript/native-preview > /dev/null 2>&1

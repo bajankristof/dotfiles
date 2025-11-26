@@ -79,6 +79,9 @@ export PACKAGES=(
   # Fun
   steam
   discord
+  gamescope
+  gamemode
+  lib32-gamemode
 )
 
 export AUR_PACKAGES=(
