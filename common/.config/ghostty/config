@@ -29,4 +29,5 @@ keybind = global:super+shift+t=toggle_quick_terminal
 #keybind = super+k=text:\x0c
 keybind = shift+enter=text:\x1b\r
 
+config-file = ?os.config
 config-file = ?local.config
