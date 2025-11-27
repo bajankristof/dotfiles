@@ -65,6 +65,9 @@ export PACKAGES=(
 
   # Tools
   aws-cli
+  docker
+  docker-buildx
+  docker-compose
   go
   gopls
   helm
