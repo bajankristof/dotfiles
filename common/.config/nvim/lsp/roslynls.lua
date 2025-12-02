@@ -36,13 +36,13 @@ end
 return {
   cmd = {
     'dotnet',
-    vim.fn.expand('~/.roslynls/Microsoft.CodeAnalysis.LanguageServer.dll'),
+    vim.fn.expand('~/.local/share/roslynls/Microsoft.CodeAnalysis.LanguageServer.dll'),
     '--stdio',
     '--logLevel',
     -- 'Trace',
     'Information',
     '--extensionLogDirectory',
-    vim.fn.expand('~/.roslynls/logs'),
+    vim.fn.expand('~/.local/state/roslynls/logs'),
   },
   filetypes = { 'cs' },
   offset_encoding = 'utf-8',
