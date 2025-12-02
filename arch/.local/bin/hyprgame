@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+COMMAND=('gamemoderun')
+declare -A OPTS=([mangoapp]=0 [dry_run]=0)
+ARGV=()
+
+# Parse arguments
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --mangoapp)
+      OPTS[mangoapp]=1
+      shift
+      ;;
+    --dry-run)
+      OPTS[dry_run]=1
+      shift
+      ;;
+    --)
+      shift
+      while [ $# -gt 0 ]; do
+        ARGV+=("$1")
+        shift
+      done
+      break
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
+# Prepend mangohud if mangoapp enabled
+if [ "${OPTS[mangoapp]}" = 1 ]; then
+  COMMAND=('mangohud' "${COMMAND[@]}")
+fi
+
+# Prepend env var
+COMMAND=('env' 'SDL_VIDEO_X11_WMCLASS=hyprgame' "${COMMAND[@]}")
+
+if [ "${OPTS[dry_run]}" = 1 ]; then
+  echo "${COMMAND[@]}" "${ARGV[@]}"
+  exit 0
+fi
+
+exec "${COMMAND[@]}" "${ARGV[@]}"
