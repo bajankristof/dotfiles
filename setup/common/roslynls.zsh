@@ -36,7 +36,7 @@ trap 'rm -rf ~/.cache/roslynls' EXIT
   fi
 
   unzip -q -o roslynls.nupkg "content/LanguageServer/${PLATFORM}/*"
-  rm -rf ~/.local/share/roslynls/*
+  rm -rf ~/.local/share/roslynls/*(N)
   mv "content/LanguageServer/${PLATFORM}/"* ~/.local/share/roslynls/
 )
 
