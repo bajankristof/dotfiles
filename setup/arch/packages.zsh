@@ -74,10 +74,12 @@ export PACKAGES=(
   jq
   kubectl
   packer
+  tealdeer
   terraform
   terragrunt
   yq
   zoxide
+  dotnet-runtime
 
   # Fun
   steam
