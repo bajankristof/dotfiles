@@ -4,7 +4,7 @@ set -e
 
 cd "${0:a:h}"
 
-source ../colors.sh
+source ../colors.zsh
 
 if ! command -v brew &> /dev/null; then
   blue 'Installing Homebrew...'
