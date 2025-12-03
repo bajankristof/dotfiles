@@ -1,0 +1,9 @@
+[include]
+	path = ~/.config/git/local.config
+[push]
+	autoSetupRemote = true
+[core]
+	autocrlf = false
+	eol = lf
+[init]
+	defaultBranch = main
