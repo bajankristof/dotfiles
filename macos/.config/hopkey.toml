@@ -1,0 +1,14 @@
+[[bindings]]
+exec = "open -a Ghostty"
+key = ";"
+modifiers = ["cmd"]
+
+[[bindings]]
+exec = "open -a 'Google Chrome'"
+key = "b"
+modifiers = ["cmd"]
+
+[[bindings]]
+exec = "open -a Slack"
+key = "'"
+modifiers = ["cmd"]

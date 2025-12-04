@@ -1,3 +1,4 @@
+tap 'bajankristof/tap'
 tap 'common-fate/granted'
 tap 'hashicorp/tap'
 
@@ -36,6 +37,7 @@ brew 'terragrunt'
 brew 'yq'
 brew 'zoxide'
 brew 'dotnet'
+brew 'bajankristof/tap/hopkey'
 
 # Libraries
 brew 'libyaml' # ruby-lsp dependency
