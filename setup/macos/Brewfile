@@ -18,6 +18,7 @@ brew 'tree-sitter-cli'
 
 # Tools
 brew 'awscli'
+brew 'dotnet'
 brew 'duckdb'
 brew 'go'
 brew 'goose'
@@ -36,7 +37,8 @@ brew 'tealdeer'
 brew 'terragrunt'
 brew 'yq'
 brew 'zoxide'
-brew 'dotnet'
+
+# Goodies
 brew 'bajankristof/tap/hopkey'
 
 # Libraries

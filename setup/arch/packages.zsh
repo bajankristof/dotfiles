@@ -68,6 +68,7 @@ export PACKAGES=(
   docker
   docker-buildx
   docker-compose
+  dotnet-runtime
   go
   gopls
   helm
@@ -79,14 +80,13 @@ export PACKAGES=(
   terragrunt
   yq
   zoxide
-  dotnet-runtime
 
   # Fun
-  steam
   discord
-  gamescope
   gamemode
+  gamescope
   lib32-gamemode
+  steam
 )
 
 export AUR_PACKAGES=(
@@ -94,6 +94,7 @@ export AUR_PACKAGES=(
   asdf-vm
   duckdb-bin
   google-chrome
+  granted-bin
   matugen-bin
   noctalia-shell
   opencode-bin
