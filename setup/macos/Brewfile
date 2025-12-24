@@ -18,6 +18,7 @@ brew 'tree-sitter-cli'
 
 # Tools
 brew 'awscli'
+brew 'btop'
 brew 'dotnet'
 brew 'duckdb'
 brew 'go'
