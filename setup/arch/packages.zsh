@@ -73,6 +73,7 @@ export PACKAGES=(
   go
   gopls
   helm
+  httpie
   jq
   kubectl
   packer
