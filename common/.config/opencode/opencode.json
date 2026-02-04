@@ -1,4 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "catppuccin-macchiato"
+  "theme": "catppuccin-macchiato",
+  "autoupdate": false,
+  "enabled_providers": ["github-copilot"]
 }
