@@ -40,6 +40,7 @@ zsh ../common/install.zsh
 blue 'Configuring services...'
 sudo systemctl enable bluetooth
 sudo systemctl enable NetworkManager
+sudo systemctl enable tlp
 sudo usermod -aG gamemode "$USER"
 sudo usermod -aG docker "$USER"
 green 'done'

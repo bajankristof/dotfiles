@@ -16,6 +16,8 @@ export PACKAGES=(
   bluez
   bluez-utils
 
+  cpupower
+  tlp
   brightnessctl
   cava
   ddcutil
