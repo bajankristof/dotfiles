@@ -6,6 +6,7 @@ require('config.lazy')
 require('config.lsp')
 require('config.diagnostic')
 require('config.keymap')
+require('config.autocmd')
 
 -- Enable nerd font support
 vim.g.have_nerd_font = true
