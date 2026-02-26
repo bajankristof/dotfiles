@@ -3,6 +3,7 @@ export PACKAGES=(
   mesa
   lib32-mesa
   vulkan-radeon
+  vulkan-headers
   lib32-vulkan-radeon
   libva-mesa-driver
   libva-utils
