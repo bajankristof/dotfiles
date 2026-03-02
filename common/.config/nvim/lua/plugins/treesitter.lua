@@ -20,6 +20,7 @@ return {
         'javascript',
         'lua',
         'make',
+        'proto',
         'ruby',
         'scss',
         'sql',
