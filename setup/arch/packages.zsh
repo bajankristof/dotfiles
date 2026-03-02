@@ -69,6 +69,7 @@ export PACKAGES=(
   # Tools
   aws-cli
   btop
+  buf
   docker
   docker-buildx
   docker-compose

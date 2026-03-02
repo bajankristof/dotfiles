@@ -1,5 +1,6 @@
 tap 'anomalyco/tap'
 tap 'bajankristof/tap'
+tap 'bufbuild/buf'
 tap 'common-fate/granted'
 tap 'hashicorp/tap'
 
@@ -20,6 +21,7 @@ brew 'tree-sitter-cli'
 # Tools
 brew 'awscli'
 brew 'btop'
+brew 'bufbuild/buf/buf'
 brew 'dotnet'
 brew 'duckdb'
 brew 'go'
