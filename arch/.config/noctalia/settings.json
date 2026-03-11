@@ -27,10 +27,10 @@
         "viewMode": "list"
     },
     "audio": {
-        "cavaFrameRate": 120,
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
+        "spectrumFrameRate": 120,
         "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
@@ -83,6 +83,7 @@
                     "enableScrollWheel": true,
                     "focusedColor": "primary",
                     "followFocusedScreen": false,
+                    "fontWeight": "bold",
                     "groupedBorderOpacity": 1,
                     "hideUnoccupied": false,
                     "iconScale": 0.8,
@@ -258,6 +259,7 @@
     "desktopWidgets": {
         "enabled": false,
         "gridSnap": false,
+        "gridSnapScale": false,
         "monitorWidgets": [
             {
                 "name": "HDMI-A-1",
@@ -310,6 +312,7 @@
         "clockStyle": "custom",
         "compactLockScreen": false,
         "dimmerOpacity": 0.6,
+        "enableBlurBehind": true,
         "enableLockScreenCountdown": true,
         "enableLockScreenMediaControls": false,
         "enableShadows": true,
@@ -421,6 +424,10 @@
         "manualSunset": "18:30",
         "nightTemp": "4000"
     },
+    "noctaliaPerformance": {
+        "disableDesktopWidgets": true,
+        "disableWallpaper": true
+    },
     "notifications": {
         "backgroundOpacity": 1,
         "clearDismissed": true,
@@ -520,7 +527,7 @@
         "showHeader": true,
         "showKeybinds": true
     },
-    "settingsVersion": 55,
+    "settingsVersion": 57,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -569,9 +576,11 @@
         "fontFixedScale": 0.94,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
+        "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "attached",
         "settingsPanelSideBarCardStyle": false,
-        "tooltipsEnabled": false
+        "tooltipsEnabled": false,
+        "translucentWidgets": false
     },
     "wallpaper": {
         "automationEnabled": false,
