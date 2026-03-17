@@ -7,6 +7,7 @@ export PACKAGES=(
   lib32-vulkan-radeon
   libva-mesa-driver
   libva-utils
+  linux-headers
 
   pipewire
   pipewire-audio
@@ -99,6 +100,7 @@ export AUR_PACKAGES=(
   1password
   asdf-vm
   duckdb-bin
+  game-devices-udev
   google-chrome
   granted-bin
   matugen-bin
@@ -107,4 +109,5 @@ export AUR_PACKAGES=(
   terraform-ls
   vicinae-bin
   visual-studio-code-bin
+  xpadneo-dkms
 )
