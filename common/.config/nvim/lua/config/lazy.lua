@@ -24,5 +24,5 @@ vim.opt.rtp:prepend(bootstrap())
 require('lazy').setup({
   spec = {{ import = 'plugins' }},
   install = { colorscheme = { 'habamax' } },
-  checker = { enabled = true, frequency = 7 * 24 * 60 * 60 },
+  checker = { enabled = true, frequency = 30 * 24 * 60 * 60 },
 })
