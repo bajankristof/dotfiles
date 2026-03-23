@@ -6,8 +6,6 @@ cursor-style-blink = true
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 
-window-width = 9999
-window-height = 9999
 window-padding-balance = true
 window-title-font-family = "JetBrainsMono NFM Regular"
 window-new-tab-position = "end"
@@ -15,11 +13,6 @@ window-new-tab-position = "end"
 adjust-cell-height = 30%
 adjust-cursor-height = -4
 adjust-cursor-thickness = 3
-
-macos-icon = holographic
-macos-auto-secure-input = true
-macos-secure-input-indication = true
-macos-titlebar-style = transparent
 
 quick-terminal-position = bottom
 quick-terminal-screen = mouse
