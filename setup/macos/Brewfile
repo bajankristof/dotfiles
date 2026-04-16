@@ -22,7 +22,6 @@ brew 'tree-sitter-cli'
 brew 'awscli'
 brew 'btop'
 brew 'bufbuild/buf/buf'
-brew 'dotnet'
 brew 'duckdb'
 brew 'go'
 brew 'goose'
@@ -50,6 +49,6 @@ brew 'bajankristof/tap/hopkey'
 brew 'libyaml' # ruby-lsp dependency
 
 # Casks
-cask 'flutter'
+cask 'dotnet-sdk'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'ghostty'
