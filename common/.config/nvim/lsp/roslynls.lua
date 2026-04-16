@@ -1,4 +1,5 @@
 local augroup = vim.api.nvim_create_augroup('RoslynLS', { clear = true })
+local projects = {}
 
 ---@param root_dir string
 ---@return string?
@@ -23,8 +24,8 @@ end
 ---@param client vim.lsp.Client
 ---@return nil
 local function refresh_diagnostics(client)
-  local buffers = vim.lsp.get_buffers_by_client_id(client.id)
-  for _, bufnr in ipairs(buffers) do
+  local buffers = vim.lsp.get_client_by_id(client.id).attached_buffers
+  for bufnr, _ in pairs(buffers) do
     if vim.api.nvim_buf_is_loaded(bufnr) then
       client:request('textDocument/diagnostic', {
         textDocument = vim.lsp.util.make_text_document_params(bufnr)
@@ -43,17 +44,17 @@ return {
     'Information',
     '--extensionLogDirectory',
     vim.fn.expand('~/.local/state/roslynls/logs'),
+    '--extension',
+    vim.fn.expand('~/.local/share/roslynls/analyzers/Microsoft.Unity.Analyzers.dll'),
   },
   filetypes = { 'cs' },
-  offset_encoding = 'utf-8',
   root_dir = function(bufnr, cb)
-    local bufname = vim.api.nvim_buf_get_name(bufnr)
-    local root_dir = vim.fs.root(bufname, function(fname, _)
+    local root_dir = vim.fs.root(bufnr, function(fname, _)
       return fname:match('%.sln[x]?$') ~= nil
     end)
 
     if not root_dir then
-      root_dir = vim.fs.root(bufname, function(fname, _)
+      root_dir = vim.fs.root(bufnr, function(fname, _)
         return fname:match('%.csproj$') ~= nil
       end)
     end
@@ -70,17 +71,20 @@ return {
 
     local sln = find_sln(root_dir)
     if sln then
-      client.notify('solution/open', {
-        solution = vim.uri_from_fname(sln)
+      client:notify('solution/open', {
+        solution = vim.uri_from_fname(sln),
       })
     else
       local csproj = find_csproj(root_dir)
       if csproj then
-        client.notify('project/open', {
-          projects = { vim.uri_from_fname(csproj) }
+        client:notify('project/open', {
+          projects = { vim.uri_from_fname(csproj) },
         })
       end
     end
+  end,
+  on_exit = function(_, _, client_id)
+    projects[client_id] = nil
   end,
   on_attach = function(client, bufnr)
     local autocmds = vim.api.nvim_get_autocmds({
@@ -93,7 +97,7 @@ return {
       return
     end
 
-    vim.api.nvim_create_autocmd('BufWritePost', {
+    vim.api.nvim_create_autocmd({ 'BufWritePost', 'InsertLeave' }, {
       group = augroup,
       buffer = bufnr,
       callback = function()
@@ -102,12 +106,24 @@ return {
     })
   end,
   handlers = {
+    ['textDocument/diagnostic'] = function(err, result, ctx, config)
+      -- For some reason, Roslyn LS sends IDE0005 diagnostics in Unity projects
+      -- before the project initialization is complete and they don't go away after.
+      -- This is a workaround to filter them out until the project initialization is complete.
+      if not projects[ctx.client_id] and result and result.items then
+        result.items = vim.tbl_filter(function(d)
+          return d.code ~= 'IDE0005'
+        end, result.items)
+      end
+      return vim.lsp.diagnostic.on_diagnostic(err, result, ctx, config)
+    end,
     ['workspace/projectInitializationComplete'] = function(_, _, ctx)
       local client = vim.lsp.get_client_by_id(ctx.client_id)
       if not client then
         return vim.NIL
       end
 
+      projects[ctx.client_id] = true
       refresh_diagnostics(client)
 
       return vim.NIL

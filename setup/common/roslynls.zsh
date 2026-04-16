@@ -43,3 +43,23 @@ trap 'rm -rf ~/.cache/roslynls' EXIT
 green 'done'
 echo ''
 
+blue 'Installing Unity analyzers...'
+
+UNITY_ANALYZERS_PACKAGE='microsoft.unity.analyzers'
+UNITY_ANALYZERS_VERSION="$(curl -sSL "https://api.nuget.org/v3-flatcontainer/${UNITY_ANALYZERS_PACKAGE}/index.json" | jq -r '.versions[-1]')"
+
+(
+  cd ~/.cache/roslynls
+  if command -v wget &> /dev/null; then
+    wget -q --show-progress -O unity-analyzers.nupkg "https://api.nuget.org/v3-flatcontainer/${UNITY_ANALYZERS_PACKAGE}/${UNITY_ANALYZERS_VERSION}/${UNITY_ANALYZERS_PACKAGE}.${UNITY_ANALYZERS_VERSION}.nupkg"
+  else
+    curl -fL "https://api.nuget.org/v3-flatcontainer/${UNITY_ANALYZERS_PACKAGE}/${UNITY_ANALYZERS_VERSION}/${UNITY_ANALYZERS_PACKAGE}.${UNITY_ANALYZERS_VERSION}.nupkg" -o unity-analyzers.nupkg
+  fi
+
+  unzip -q -o unity-analyzers.nupkg "analyzers/*"
+  mkdir -p ~/.local/share/roslynls/analyzers
+  mv analyzers/dotnet/cs/* ~/.local/share/roslynls/analyzers/
+)
+
+green 'done'
+echo ''

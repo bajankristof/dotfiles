@@ -75,6 +75,7 @@ export PACKAGES=(
   docker-buildx
   docker-compose
   dotnet-runtime
+  dotnet-sdk
   go
   gopls
   helm
