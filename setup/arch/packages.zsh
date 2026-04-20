@@ -107,6 +107,7 @@ export AUR_PACKAGES=(
   matugen-bin
   noctalia-shell
   opencode-bin
+  protonplus
   terraform-ls
   vicinae-bin
   visual-studio-code-bin
