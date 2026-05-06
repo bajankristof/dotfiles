@@ -1,9 +1,10 @@
 export PACKAGES=(
   # System
   mesa
-  lib32-mesa
   vulkan-radeon
   vulkan-headers
+  vulkan-tools
+  lib32-mesa
   lib32-vulkan-radeon
   libva-mesa-driver
   libva-utils
@@ -112,4 +113,5 @@ export AUR_PACKAGES=(
   vicinae-bin
   visual-studio-code-bin
   xpadneo-dkms
+  zenergy-dkms-git
 )
