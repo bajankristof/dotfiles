@@ -13,10 +13,10 @@ hl.monitor({
   mode          = "3840x2160@120",
   position      = "auto",
   scale         = "2",
-  vrr           = 1,
   bitdepth      = 10,
   cm            = "hdr",
-  sdrbrightness = 1.5,
+  sdr_eotf      = "srgb",
+  sdrbrightness = 2,
 })
 
 
@@ -181,6 +181,18 @@ hl.config({
   },
 })
 
+-----------------
+----  DEBUG  ----
+-----------------
+
+hl.config({
+  debug = {
+    -- NOTE: vfr causes flickering in Hyprland 0.55
+    -- (https://github.com/hyprwm/Hyprland/discussions/14720).
+    vfr = false
+  },
+})
+
 
 ----------------
 ----  MISC  ----
@@ -191,7 +203,7 @@ hl.config({
     force_default_wallpaper  = 0,
     disable_hyprland_logo    = true,
     disable_splash_rendering = true,
-    vrr                      = 1,
+    vrr                      = 2,
   },
 })
 
@@ -275,14 +287,24 @@ hl.bind(mainMod .. " + apostrophe",    hl.dsp.exec_cmd(messenger))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.window.fullscreen({ mode = "maximized" }))
 
 -- MacOS-like shortcuts
+-- NOTE: send_shortcut doesn't send key release events for non-modifier keys
+-- in Hyprland 0.55 (https://github.com/hyprwm/Hyprland/discussions/14445).
 hl.bind("SUPER + C", hl.dsp.send_shortcut({ mods = "CTRL",  key = "Insert" }))
+hl.bind("SUPER + C", hl.dsp.send_shortcut({ mods = "CTRL",  key = "Insert" }), { release = true })
 hl.bind("SUPER + V", hl.dsp.send_shortcut({ mods = "SHIFT", key = "Insert" }))
+hl.bind("SUPER + V", hl.dsp.send_shortcut({ mods = "SHIFT", key = "Insert" }), { release = true })
 hl.bind("SUPER + X", hl.dsp.send_shortcut({ mods = "CTRL",  key = "X" }))
+hl.bind("SUPER + X", hl.dsp.send_shortcut({ mods = "CTRL",  key = "X" }), { release = true })
 hl.bind("SUPER + F", hl.dsp.send_shortcut({ mods = "CTRL",  key = "F" }))
+hl.bind("SUPER + F", hl.dsp.send_shortcut({ mods = "CTRL",  key = "F" }), { release = true })
 hl.bind("SUPER + W", hl.dsp.send_shortcut({ mods = "CTRL",  key = "W" }))
+hl.bind("SUPER + W", hl.dsp.send_shortcut({ mods = "CTRL",  key = "W" }), { release = true })
 hl.bind("SUPER + T", hl.dsp.send_shortcut({ mods = "CTRL",  key = "T" }))
+hl.bind("SUPER + T", hl.dsp.send_shortcut({ mods = "CTRL",  key = "T" }), { release = true })
 hl.bind("SUPER + R", hl.dsp.send_shortcut({ mods = "CTRL",  key = "R" }))
+hl.bind("SUPER + R", hl.dsp.send_shortcut({ mods = "CTRL",  key = "R" }), { release = true })
 hl.bind("SUPER + S", hl.dsp.send_shortcut({ mods = "CTRL",  key = "S" }))
+hl.bind("SUPER + S", hl.dsp.send_shortcut({ mods = "CTRL",  key = "S" }), { release = true })
 
 -- Move focus with mainMod SHIFT + vim keys
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ direction = "left" }))
