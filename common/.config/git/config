@@ -1,11 +1,18 @@
 [include]
 	path = ~/.config/git/local.gitconfig
+
 [includeIf "hasconfig:remote.*.url:*github.com*/*"]
   path = ~/.config/git/github.gitconfig
+
 [push]
 	autoSetupRemote = true
+
 [core]
 	autocrlf = false
 	eol = lf
+
 [init]
 	defaultBranch = main
+
+[diff]
+  external = difft

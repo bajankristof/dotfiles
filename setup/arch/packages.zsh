@@ -72,6 +72,7 @@ export PACKAGES=(
   aws-cli
   btop
   buf
+  difftastic
   docker
   docker-buildx
   docker-compose

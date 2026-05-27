@@ -1,8 +1,5 @@
 theme = "Catppuccin Macchiato"
 
-cursor-style = bar
-cursor-style-blink = true
-
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 
@@ -20,8 +17,13 @@ quick-terminal-autohide = false
 
 copy-on-select = false
 
+shell-integration = zsh
+shell-integration-features = no-cursor
+
 keybind = global:super+shift+t=toggle_quick_terminal
 keybind = shift+enter=text:\x1b\r
 
 config-file = ?os.config
 config-file = ?local.config
+
+custom-shader = cursor.glsl

@@ -44,11 +44,24 @@ if [[ -d $HOME/.zsh.d ]]; then
 fi
 
 bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
+
+function _set_cursor_shape() {
+  case $KEYMAP in
+    vicmd)              print -n '\e[2 q' ;;
+    viins|main|*)       print -n '\e[5 q' ;;
+  esac
+}
+
+function zle-keymap-select { _set_cursor_shape }
+function zle-line-init     { _set_cursor_shape }
+zle -N zle-keymap-select
+zle -N zle-line-init
+
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^f' autosuggest-accept
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey -M viins 'jk' vi-cmd-mode
 
 eval "$(starship init zsh)"
 
