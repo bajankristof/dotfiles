@@ -1,10 +1,10 @@
 return {
-  'NickvanDyke/opencode.nvim',
-  event = 'VeryLazy',
+  "NickvanDyke/opencode.nvim",
+  event = "VeryLazy",
   config = function()
-    local opencode = require('opencode')
+    local opencode = require("opencode")
 
-    vim.keymap.set({ 'n', 'v' }, '<leader>oc', function() opencode.ask('@this: ', { submit = true }) end)
-    vim.keymap.set({ 'n', 'v' }, '<leader>ot', function() opencode.toggle() end)
-  end
+    vim.keymap.set({ "n", "v" }, "<leader>oc", function() opencode.ask("@this: ", { submit = true }) end)
+    vim.keymap.set({ "n", "v" }, "<leader>ot", function() opencode.toggle() end)
+  end,
 }

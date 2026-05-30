@@ -4,7 +4,7 @@ local function new_dir_cache()
       local result = {}
 
       local proc = vim.system({
-        'git', 'ls-tree', 'HEAD', '--name-only',
+        "git", "ls-tree", "HEAD", "--name-only",
       }, { text = true, cwd = dir })
 
       local status = proc:wait()
@@ -12,9 +12,9 @@ local function new_dir_cache()
         return nil
       end
 
-      for file in vim.gsplit(status.stdout, '\n', { plain = true, trimempty = true }) do
-        file = file:gsub('/$', '')
-        if file:sub(1, 1) ~= '.' then
+      for file in vim.gsplit(status.stdout, "\n", { plain = true, trimempty = true }) do
+        file = file:gsub("/$", "")
+        if file:sub(1, 1) ~= "." then
           goto next
         end
 
@@ -30,13 +30,13 @@ local function new_dir_cache()
 end
 
 return {
-  'stevearc/oil.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  "stevearc/oil.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   lazy = false,
-  after = 'nvim-web-devicons',
+  after = "nvim-web-devicons",
   config = function()
-    local oil = require('oil')
-    local refresh = require('oil.actions').refresh
+    local oil = require("oil")
+    local refresh = require("oil.actions").refresh
 
     local cache = new_dir_cache()
     local refresh_callback = refresh.callback
@@ -48,12 +48,12 @@ return {
     oil.setup {
       view_options = {
         is_hidden_file = function(name, bufnr)
-          if name == '.' or name == '..' then
+          if name == "." or name == ".." then
             return true
           end
 
           local dir = oil.get_current_dir(bufnr)
-          local dotfile = vim.startswith(name, '.')
+          local dotfile = vim.startswith(name, ".")
           if not dir or not dotfile then
             return dotfile
           end
@@ -68,6 +68,6 @@ return {
       },
     }
 
-    vim.keymap.set('n', '-', oil.open)
+    vim.keymap.set("n", "-", oil.open)
   end,
 }

@@ -1,2 +1,2 @@
-vim.lsp.enable('roslynls')
+vim.lsp.enable("roslynls")
 vim.treesitter.start()

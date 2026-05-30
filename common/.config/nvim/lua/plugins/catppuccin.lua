@@ -1,10 +1,10 @@
 return {
-  'catppuccin/nvim',
+  "catppuccin/nvim",
   config = function ()
-    local catppuccin = require('catppuccin')
+    local catppuccin = require("catppuccin")
 
     catppuccin.setup {
-      flavour = 'macchiato',
+      flavour = "macchiato",
       integrations = {
         blink_cmp = true,
         copilot_vim = true,
@@ -14,6 +14,6 @@ return {
       },
     }
 
-    vim.cmd('colorscheme catppuccin')
-  end
+    vim.cmd("colorscheme catppuccin")
+  end,
 }

@@ -1,11 +1,11 @@
-local augroup = vim.api.nvim_create_augroup('RoslynLS', { clear = true })
+local augroup = vim.api.nvim_create_augroup("RoslynLS", { clear = true })
 local projects = {}
 
 ---@param root_dir string
 ---@return string?
 local function find_sln(root_dir)
   for entry, type in vim.fs.dir(root_dir) do
-    if type == 'file' and entry:match('%.sln[x]?$') then
+    if type == "file" and entry:match("%.sln[x]?$") then
       return vim.fs.joinpath(root_dir, entry)
     end
   end
@@ -15,7 +15,7 @@ end
 ---@return string?
 local function find_csproj(root_dir)
   for entry, type in vim.fs.dir(root_dir) do
-    if type == 'file' and entry:match('%.csproj$') then
+    if type == "file" and entry:match("%.csproj$") then
       return vim.fs.joinpath(root_dir, entry)
     end
   end
@@ -27,8 +27,8 @@ local function refresh_diagnostics(client)
   local buffers = vim.lsp.get_client_by_id(client.id).attached_buffers
   for bufnr, _ in pairs(buffers) do
     if vim.api.nvim_buf_is_loaded(bufnr) then
-      client:request('textDocument/diagnostic', {
-        textDocument = vim.lsp.util.make_text_document_params(bufnr)
+      client:request("textDocument/diagnostic", {
+        textDocument = vim.lsp.util.make_text_document_params(bufnr),
       }, nil, bufnr)
     end
   end
@@ -36,26 +36,26 @@ end
 
 return {
   cmd = {
-    'dotnet',
-    vim.fn.expand('~/.local/share/roslynls/Microsoft.CodeAnalysis.LanguageServer.dll'),
-    '--stdio',
-    '--logLevel',
+    "dotnet",
+    vim.fn.expand("~/.local/share/roslynls/Microsoft.CodeAnalysis.LanguageServer.dll"),
+    "--stdio",
+    "--logLevel",
     -- 'Trace',
-    'Information',
-    '--extensionLogDirectory',
-    vim.fn.expand('~/.local/state/roslynls/logs'),
-    '--extension',
-    vim.fn.expand('~/.local/share/roslynls/analyzers/Microsoft.Unity.Analyzers.dll'),
+    "Information",
+    "--extensionLogDirectory",
+    vim.fn.expand("~/.local/state/roslynls/logs"),
+    "--extension",
+    vim.fn.expand("~/.local/share/roslynls/analyzers/Microsoft.Unity.Analyzers.dll"),
   },
-  filetypes = { 'cs' },
+  filetypes = { "cs" },
   root_dir = function(bufnr, cb)
     local root_dir = vim.fs.root(bufnr, function(fname, _)
-      return fname:match('%.sln[x]?$') ~= nil
+      return fname:match("%.sln[x]?$") ~= nil
     end)
 
     if not root_dir then
       root_dir = vim.fs.root(bufnr, function(fname, _)
-        return fname:match('%.csproj$') ~= nil
+        return fname:match("%.csproj$") ~= nil
       end)
     end
 
@@ -71,13 +71,13 @@ return {
 
     local sln = find_sln(root_dir)
     if sln then
-      client:notify('solution/open', {
+      client:notify("solution/open", {
         solution = vim.uri_from_fname(sln),
       })
     else
       local csproj = find_csproj(root_dir)
       if csproj then
-        client:notify('project/open', {
+        client:notify("project/open", {
           projects = { vim.uri_from_fname(csproj) },
         })
       end
@@ -88,7 +88,7 @@ return {
   end,
   on_attach = function(client, bufnr)
     local autocmds = vim.api.nvim_get_autocmds({
-      event = 'BufWritePost',
+      event = "BufWritePost",
       group = augroup,
       buffer = bufnr,
     })
@@ -97,7 +97,7 @@ return {
       return
     end
 
-    vim.api.nvim_create_autocmd({ 'BufWritePost', 'InsertLeave' }, {
+    vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
       group = augroup,
       buffer = bufnr,
       callback = function()
@@ -106,18 +106,18 @@ return {
     })
   end,
   handlers = {
-    ['textDocument/diagnostic'] = function(err, result, ctx, config)
+    ["textDocument/diagnostic"] = function(err, result, ctx, config)
       -- For some reason, Roslyn LS sends IDE0005 diagnostics in Unity projects
       -- before the project initialization is complete and they don't go away after.
       -- This is a workaround to filter them out until the project initialization is complete.
       if not projects[ctx.client_id] and result and result.items then
         result.items = vim.tbl_filter(function(d)
-          return d.code ~= 'IDE0005'
+          return d.code ~= "IDE0005"
         end, result.items)
       end
       return vim.lsp.diagnostic.on_diagnostic(err, result, ctx, config)
     end,
-    ['workspace/projectInitializationComplete'] = function(_, _, ctx)
+    ["workspace/projectInitializationComplete"] = function(_, _, ctx)
       local client = vim.lsp.get_client_by_id(ctx.client_id)
       if not client then
         return vim.NIL
@@ -128,15 +128,15 @@ return {
 
       return vim.NIL
     end,
-    ['workspace/_roslyn_projectNeedsRestore'] = function(_, result, ctx)
+    ["workspace/_roslyn_projectNeedsRestore"] = function(_, result, ctx)
       local client = vim.lsp.get_client_by_id(ctx.client_id)
       if not client then
         return vim.NIL
       end
 
-      client:request('workspace/_roslyn_restore', result, function(error, _)
+      client:request("workspace/_roslyn_restore", result, function(error, _)
         if error then
-          vim.notify(error.message, vim.log.levels.ERROR, { title = 'Roslyn LS' })
+          vim.notify(error.message, vim.log.levels.ERROR, { title = "Roslyn LS" })
         end
       end)
 
@@ -151,11 +151,11 @@ return {
     },
   },
   settings = {
-    ['csharp|background_analysis'] = {
-      dotnet_analyzer_diagnostics_scope = 'fullSolution',
-      dotnet_compiler_diagnostics_scope = 'fullSolution',
+    ["csharp|background_analysis"] = {
+      dotnet_analyzer_diagnostics_scope = "fullSolution",
+      dotnet_compiler_diagnostics_scope = "fullSolution",
     },
-    ['csharp|inlay_hints'] = {
+    ["csharp|inlay_hints"] = {
       csharp_enable_inlay_hints_for_implicit_object_creation = true,
       csharp_enable_inlay_hints_for_implicit_variable_types = true,
       csharp_enable_inlay_hints_for_lambda_parameter_types = true,
@@ -169,15 +169,15 @@ return {
       dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
       dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
     },
-    ['csharp|symbol_search'] = {
+    ["csharp|symbol_search"] = {
       dotnet_search_reference_assemblies = true,
     },
-    ['csharp|completion'] = {
+    ["csharp|completion"] = {
       dotnet_show_name_completion_suggestions = true,
       dotnet_show_completion_items_from_unimported_namespaces = true,
       dotnet_provide_regex_completions = true,
     },
-    ['csharp|code_lens'] = {
+    ["csharp|code_lens"] = {
       dotnet_enable_references_code_lens = true,
     },
   },
