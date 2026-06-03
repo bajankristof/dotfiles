@@ -8,9 +8,18 @@ return {
     fzf.setup {
       ui_select = true,
       fzf_colors = true,
+      winopts = {
+        border = "rounded",
+        preview = {
+          border    = "rounded",
+          title     = true,
+          title_pos = "center",
+        },
+      },
       files = {
-        fd_opts = [[--color=never --type f --hidden --follow --exclude .git]],
-        rg_opts = [[--color=never --files --hidden --follow -g "!.git"]],
+        cwd_prompt = false,
+        fd_opts    = [[--color=never --type f --hidden --follow --exclude .git]],
+        rg_opts    = [[--color=never --files --hidden --follow -g "!.git"]],
       },
       grep = {
         rg_glob = true,
