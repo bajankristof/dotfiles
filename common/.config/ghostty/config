@@ -27,3 +27,4 @@ config-file = ?os.config
 config-file = ?local.config
 
 custom-shader = cursor.glsl
+custom-shader-animation = always
