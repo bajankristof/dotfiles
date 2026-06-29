@@ -18,12 +18,9 @@ return {
       },
       files = {
         cwd_prompt = false,
-        fd_opts    = [[--color=never --type f --hidden --follow --exclude .git]],
-        rg_opts    = [[--color=never --files --hidden --follow -g "!.git"]],
       },
       grep = {
-        rg_glob = true,
-        rg_opts = [[--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -g "!.git" -e]],
+        hidden = true,
       },
       keymap = {
         fzf = {

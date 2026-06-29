@@ -85,6 +85,7 @@ export PACKAGES=(
   jq
   kubectl
   packer
+  sqlc
   tealdeer
   terraform
   terragrunt
@@ -101,10 +102,12 @@ export PACKAGES=(
 
 export AUR_PACKAGES=(
   1password
+  air
   asdf-vm
   duckdb-bin
   game-devices-udev
   google-chrome
+  goose
   granted-bin
   matugen-bin
   noctalia-shell
