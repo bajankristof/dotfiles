@@ -279,17 +279,18 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/
-hl.bind(mainMod .. " + semicolon",     hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + Q",             hl.dsp.window.close())
-hl.bind(mainMod .. " + M",             hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
-hl.bind(mainMod .. " + E",             hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + space",         hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(onePassword .. " --quick-access"))
-hl.bind(mainMod .. " + SHIFT + X",     hl.dsp.exec_cmd(onePassword .. " --quick-access"))
-hl.bind(mainMod .. " + B",             hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + G",             hl.dsp.exec_cmd(steam))
-hl.bind(mainMod .. " + apostrophe",    hl.dsp.exec_cmd(messenger))
+hl.bind(mainMod .. " + semicolon",      hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Q",              hl.dsp.window.close())
+hl.bind(mainMod .. " + M",              hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
+hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + space",          hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + SHIFT + space",  hl.dsp.exec_cmd(onePassword .. " --quick-access"))
+hl.bind(mainMod .. " + SHIFT + X",      hl.dsp.exec_cmd(onePassword .. " --quick-access"))
+hl.bind(mainMod .. " + B",              hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + G",              hl.dsp.exec_cmd(steam))
+hl.bind(mainMod .. " + apostrophe",     hl.dsp.exec_cmd(messenger))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. " + ALT + return",   hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 -- MacOS-like shortcuts
 hl.bind("SUPER + C", hl.dsp.send_shortcut({ mods = "CTRL",  key = "Insert" }))
