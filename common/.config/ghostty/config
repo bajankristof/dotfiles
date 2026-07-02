@@ -3,6 +3,8 @@ theme = "Catppuccin Macchiato"
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 
+window-padding-x = 2
+window-padding-y = 2
 window-padding-balance = true
 window-title-font-family = "JetBrainsMono NFM Regular"
 window-new-tab-position = "end"
@@ -22,6 +24,7 @@ shell-integration-features = no-cursor
 
 keybind = global:super+shift+t=toggle_quick_terminal
 keybind = shift+enter=text:\x1b\r
+keybind = super+k=text:\x18\x0b
 
 config-file = ?os.config
 config-file = ?local.config

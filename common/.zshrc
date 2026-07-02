@@ -47,17 +47,21 @@ bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M viins 'jk' vi-cmd-mode
 
-function _set_cursor_shape() {
+function vi-cmd-reset-cursor() {
   case $KEYMAP in
     vicmd)              print -n '\e[2 q' ;;
     viins|main|*)       print -n '\e[5 q' ;;
   esac
 }
 
-function zle-keymap-select { _set_cursor_shape }
-function zle-line-init     { _set_cursor_shape }
+function zle-keymap-select { vi-cmd-reset-cursor }
+function zle-line-init     { vi-cmd-reset-cursor }
 zle -N zle-keymap-select
 zle -N zle-line-init
+
+function bufclear() { printf '\x1b[H\x1b[2J\x1b[3J'; zle redisplay }
+zle -N bufclear
+bindkey '^X^K' bufclear
 
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward

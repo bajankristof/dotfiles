@@ -25,20 +25,18 @@ brew 'bufbuild/buf/buf', trusted: true
 brew 'difftastic'
 brew 'duckdb'
 brew 'go'
-brew 'go-air'
-brew 'goose'
 brew 'gopls'
 brew 'common-fate/granted/granted', trusted: true
 brew 'hashicorp/tap/packer', trusted: true
 brew 'hashicorp/tap/terraform', trusted: true
 brew 'hashicorp/tap/terraform-ls', trusted: true
 brew 'helm'
+brew 'herdr'
 brew 'httpie'
 brew 'jq'
 brew 'lua-language-server'
 brew 'luarocks'
 brew 'anomalyco/tap/opencode', trusted: true
-brew 'sqlc'
 brew 'tealdeer'
 brew 'terragrunt'
 brew 'yq'
