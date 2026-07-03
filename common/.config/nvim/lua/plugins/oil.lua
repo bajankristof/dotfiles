@@ -31,6 +31,7 @@ end
 
 return {
   "stevearc/oil.nvim",
+  name = "oil",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   lazy = false,
   after = "nvim-web-devicons",

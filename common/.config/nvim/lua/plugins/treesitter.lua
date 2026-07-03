@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    name = "treesitter",
     branch = "main",
     event = "VeryLazy",
     build = ":TSUpdate",
@@ -32,6 +33,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    name = "treesitter-textobjects",
     branch = "main",
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },

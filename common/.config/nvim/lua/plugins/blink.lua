@@ -1,5 +1,6 @@
 return {
   "saghen/blink.cmp",
+  name = "blink",
   version = "1.*",
   event = "InsertEnter",
   config = function()
