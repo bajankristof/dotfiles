@@ -7,22 +7,11 @@ return {
     local theme = require("catppuccin.utils.lualine")("macchiato")
 
     vim.api.nvim_create_autocmd("RecordingEnter", {
-      callback = function()
-        lualine.refresh { place = { "statusline" } }
-      end,
+      callback = function() lualine.refresh { place = { "statusline" } } end,
     })
-
     vim.api.nvim_create_autocmd("RecordingLeave", {
-      callback = function()
-        lualine.refresh { place = { "statusline" } }
-      end,
+      callback = function() lualine.refresh { place = { "statusline" } } end,
     })
-
-    local panel_bg = "#181825"
-    theme.normal.c   = { bg = panel_bg, fg = theme.normal.c.fg }
-    theme.inactive.a = { bg = panel_bg, fg = theme.inactive.a.fg }
-    theme.inactive.b = { bg = panel_bg, fg = theme.inactive.b.fg, gui = theme.inactive.b.gui }
-    theme.inactive.c = { bg = panel_bg, fg = theme.inactive.c.fg }
 
     lualine.setup {
       options = {
@@ -32,7 +21,11 @@ return {
       },
       sections = {
         lualine_a = {
-          "mode",
+          {
+            "mode",
+            separator = { left = "" },
+            right_padding = 2,
+          },
           {
             "macro",
             fmt = function()
@@ -43,7 +36,11 @@ return {
           },
         },
         lualine_z = {
-          "location",
+          {
+            "location",
+            separator = { right = "" },
+            left_padding = 2,
+          },
         },
       },
     }
