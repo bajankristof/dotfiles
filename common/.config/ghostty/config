@@ -24,7 +24,7 @@ shell-integration-features = no-cursor
 
 keybind = global:super+shift+t=toggle_quick_terminal
 keybind = shift+enter=text:\x1b\r
-keybind = super+k=text:\x18\x0b
+keybind = super+k=clear_screen
 
 config-file = ?os.config
 config-file = ?local.config

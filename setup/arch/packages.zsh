@@ -106,7 +106,6 @@ export AUR_PACKAGES=(
   game-devices-udev
   google-chrome
   granted-bin
-  herdr-bin
   matugen-bin
   noctalia-shell
   opencode-bin

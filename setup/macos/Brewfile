@@ -31,7 +31,6 @@ brew 'hashicorp/tap/packer', trusted: true
 brew 'hashicorp/tap/terraform', trusted: true
 brew 'hashicorp/tap/terraform-ls', trusted: true
 brew 'helm'
-brew 'herdr'
 brew 'httpie'
 brew 'jq'
 brew 'lua-language-server'

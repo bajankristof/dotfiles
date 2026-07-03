@@ -59,10 +59,6 @@ function zle-line-init     { vi-cmd-reset-cursor }
 zle -N zle-keymap-select
 zle -N zle-line-init
 
-function bufclear() { printf '\x1b[H\x1b[2J\x1b[3J'; zle redisplay }
-zle -N bufclear
-bindkey '^X^K' bufclear
-
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^f' autosuggest-accept
