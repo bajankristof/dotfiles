@@ -278,6 +278,20 @@ hl.device({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
+-- Hyprland 0.55+ has bug where releasing the key after the modifiers (when used together with send_shortcut)
+-- causes the key to be sent infinitely.
+-- As a workaround, we send the key down and up events with a small delay in between.
+-- https://github.com/hyprwm/Hyprland/discussions/14099
+local function send_shortcut(mods, key)
+  return function()
+    hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "down", window = "activewindow" }))
+
+    hl.timer(function()
+      hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "up", window = "activewindow" }))
+    end, { timeout = 50, type = "oneshot" })
+  end
+end
+
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/
 hl.bind(mainMod .. " + semicolon",      hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q",              hl.dsp.window.close())
@@ -285,7 +299,6 @@ hl.bind(mainMod .. " + M",              hl.dsp.exec_cmd("command -v hyprshutdown
 hl.bind(mainMod .. " + E",              hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + space",          hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + space",  hl.dsp.exec_cmd(onePassword .. " --quick-access"))
-hl.bind(mainMod .. " + SHIFT + X",      hl.dsp.exec_cmd(onePassword .. " --quick-access"))
 hl.bind(mainMod .. " + B",              hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + G",              hl.dsp.exec_cmd(steam))
 hl.bind(mainMod .. " + apostrophe",     hl.dsp.exec_cmd(messenger))
@@ -293,14 +306,15 @@ hl.bind(mainMod .. " + SHIFT + return", hl.dsp.window.fullscreen({ mode = "maxim
 hl.bind(mainMod .. " + ALT + return",   hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 -- MacOS-like shortcuts
-hl.bind("SUPER + C", hl.dsp.send_shortcut({ mods = "CTRL",  key = "Insert" }))
-hl.bind("SUPER + V", hl.dsp.send_shortcut({ mods = "SHIFT", key = "Insert" }))
-hl.bind("SUPER + X", hl.dsp.send_shortcut({ mods = "CTRL",  key = "X" }))
-hl.bind("SUPER + F", hl.dsp.send_shortcut({ mods = "CTRL",  key = "F" }))
-hl.bind("SUPER + W", hl.dsp.send_shortcut({ mods = "CTRL",  key = "W" }))
-hl.bind("SUPER + T", hl.dsp.send_shortcut({ mods = "CTRL",  key = "T" }))
-hl.bind("SUPER + R", hl.dsp.send_shortcut({ mods = "CTRL",  key = "R" }))
-hl.bind("SUPER + S", hl.dsp.send_shortcut({ mods = "CTRL",  key = "S" }))
+hl.bind("SUPER + C",         send_shortcut("CTRL", "Insert"))
+hl.bind("SUPER + V",         send_shortcut("SHIFT", "Insert"))
+hl.bind("SUPER + X",         send_shortcut("CTRL", "X"))
+hl.bind("SUPER + SHIFT + X", send_shortcut("CTRL SHIFT", "X"))
+hl.bind("SUPER + F",         send_shortcut("CTRL", "F"))
+hl.bind("SUPER + W",         send_shortcut("CTRL", "W"))
+hl.bind("SUPER + T",         send_shortcut("CTRL", "T"))
+hl.bind("SUPER + R",         send_shortcut("CTRL", "R"))
+hl.bind("SUPER + S",         send_shortcut("CTRL", "S"))
 
 -- Move focus with mainMod SHIFT + vim keys
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ direction = "left" }))
