@@ -1,6 +1,5 @@
 return {
   "bajankristof/fileref.nvim",
-  name = "fileref",
   event = "VeryLazy",
   config = function()
     local fileref = require("fileref")

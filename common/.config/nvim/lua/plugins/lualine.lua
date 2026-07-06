@@ -1,6 +1,5 @@
 return {
   "nvim-lualine/lualine.nvim",
-  name = "lualine",
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin/nvim" },
   config = function()

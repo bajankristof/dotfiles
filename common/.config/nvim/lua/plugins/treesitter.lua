@@ -1,7 +1,6 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    name = "treesitter",
     branch = "main",
     event = "VeryLazy",
     build = ":TSUpdate",

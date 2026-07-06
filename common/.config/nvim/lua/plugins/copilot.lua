@@ -1,6 +1,5 @@
 return {
   "github/copilot.vim",
-  name = "copilot",
   event = { "InsertEnter", "VeryLazy" },
   config = function()
     vim.g.copilot_no_tab_map = true
