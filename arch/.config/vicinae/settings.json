@@ -9,25 +9,39 @@
 // Learn more about configuration at https://docs.vicinae.com/config
 
 {
-  "close_on_focus_loss": true,
-  "font": {
-    "normal": {
-      "family": "JetBrainsMono Nerd Font Propo",
-      "size": 10.5
-    }
-  },
-  "theme": {
-    "dark": {
-      "name": "catppuccin-mocha",
-      "icon_theme": "Adwaita"
-    }
-  },
-  "launcher_window": {
-    "opacity": 1,
-    "client_side_decorations": {
-      "enabled": true,
-      "rounding": 16,
-      "border_width": 0
-    }
-  }
+   "$schema": "https://vicinae.com/schemas/config.json",
+   "close_on_focus_loss": true,
+   "font": {
+      "normal": {
+         "family": "JetBrainsMono Nerd Font Propo",
+         "size": 10.5
+      }
+   },
+   "theme": {
+      "dark": {
+         "name": "catppuccin-macchiato",
+         "icon_theme": "Adwaita"
+      }
+   },
+   "launcher_window": {
+      "opacity": 1,
+      "client_side_decorations": {
+         "enabled": false,
+         "rounding": 16,
+         "border_width": 0
+      },
+      "layer_shell": {
+         "enabled": false
+      }
+   },
+   "providers": {
+      "files": {
+         "enabled": false,
+         "preferences": {
+            "autoIndexing": false,
+            "excludedIndexingPaths": [],
+            "indexingPaths": []
+         }
+      }
+   }
 }
