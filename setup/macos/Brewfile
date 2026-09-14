@@ -39,3 +39,5 @@ brew 'libyaml' # ruby-lsp dependency
 cask 'dotnet-sdk'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'ghostty'
+cask 'rectangle'
+cask 'scroll-reverser'

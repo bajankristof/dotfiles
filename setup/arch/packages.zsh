@@ -102,7 +102,6 @@ export AUR_PACKAGES=(
   granted-bin
   matugen-bin
   noctalia-shell
-  opencode-bin
   protonplus
   vicinae-bin
   visual-studio-code-bin
