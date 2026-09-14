@@ -278,6 +278,8 @@ hl.device({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
+local screenshotDir = "~/Pictures/Screenshots"
+
 -- Hyprland 0.55+ has bug where releasing the key after the modifiers (when used together with send_shortcut)
 -- causes the key to be sent infinitely.
 -- As a workaround, we send the key down and up events with a small delay in between.
@@ -304,6 +306,7 @@ hl.bind(mainMod .. " + G",              hl.dsp.exec_cmd(steam))
 hl.bind(mainMod .. " + apostrophe",     hl.dsp.exec_cmd(messenger))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + ALT + return",   hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind("Print",                        hl.dsp.exec_cmd("grim -g \"$(slurp)\" " .. screenshotDir .. "/$(date +%Y-%m-%d_%H-%M-%S).png"))
 
 -- MacOS-like shortcuts
 hl.bind("SUPER + C",         send_shortcut("CTRL", "Insert"))
