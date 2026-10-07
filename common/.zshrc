@@ -66,4 +66,3 @@ bindkey '^f' autosuggest-accept
 eval "$(starship init zsh)"
 
 # zprof
-

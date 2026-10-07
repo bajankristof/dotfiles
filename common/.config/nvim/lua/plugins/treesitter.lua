@@ -13,6 +13,7 @@ return {
       treesitter.install {
         "bash",
         "c_sharp",
+        "caddy",
         "css",
         "go",
         "hcl",
