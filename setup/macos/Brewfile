@@ -25,6 +25,8 @@ brew 'helm'
 brew 'httpie'
 brew 'jq'
 brew 'luarocks'
+# TODO: Use mise once V2 goes GA
+brew 'anomalyco/tap/opencode-v2', trusted: true
 brew 'tealdeer'
 brew 'yq'
 brew 'zoxide'

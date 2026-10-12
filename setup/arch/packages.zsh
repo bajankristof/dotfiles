@@ -102,6 +102,8 @@ export AUR_PACKAGES=(
   granted-bin
   matugen-bin
   noctalia-shell
+  # TODO: Use mise once V2 goes GA
+  opencode-beta
   protonplus
   vicinae-bin
   visual-studio-code-bin

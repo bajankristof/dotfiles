@@ -1,8 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": false,
-  "enabled_providers": ["opencode-go"],
-  "permission": {
-    "edit": "ask"
+  "update": "disable",
+  "permissions": [
+    { "action": "edit", "resource": "*", "effect": "ask" }
+  ],
+  "experimental": {
+    "policies": [
+      { "action": "provider.use", "resource": "*", "effect": "deny" },
+      { "action": "provider.use", "resource": "opencode-go", "effect": "allow" }
+    ]
   }
 }
