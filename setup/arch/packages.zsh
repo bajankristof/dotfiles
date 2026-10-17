@@ -37,6 +37,7 @@ export PACKAGES=(
 
   # Hyprland
   hyprland
+  noctalia
   qt5-wayland
   qt6-wayland
   wl-clipboard
@@ -77,6 +78,7 @@ export PACKAGES=(
   docker-compose
   dotnet-runtime
   dotnet-sdk
+  github-cli
   helm
   httpie
   jq
@@ -91,6 +93,8 @@ export PACKAGES=(
   gamemode
   gamescope
   lib32-gamemode
+  mangohud
+  lib32-mangohud
   steam
 )
 
@@ -101,7 +105,6 @@ export AUR_PACKAGES=(
   google-chrome
   granted-bin
   matugen-bin
-  noctalia-shell
   # TODO: Use mise once V2 goes GA
   opencode-beta
   protonplus
