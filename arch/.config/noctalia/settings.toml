@@ -3,7 +3,7 @@ config_version = 15
 [bar.default]
 border = "surface_variant"
 capsule = true
-end = [ "group:g2", "network", "bluetooth", "volume", "session" ]
+end = [ "group:g2", "bluetooth", "volume", "session" ]
 font_family = "JetBrainsMono Nerd Font Propo"
 margin_ends = 0
 padding = 16
@@ -91,6 +91,9 @@ directory = "~/.local/share/wallpapers"
 
     [wallpaper.default]
     path = "~/.local/share/wallpapers/yoho.jpg"
+
+[widget.audio_visualizer]
+width = 128
 
 [widget.media]
 hide_when_idle = true
