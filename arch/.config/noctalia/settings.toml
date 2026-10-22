@@ -35,6 +35,27 @@ widget_spacing = 8
     opacity = 1.0
     padding = 6.0
 
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "system"
+
+[[control_center.shortcuts]]
+type = "weather"
+
+[location]
+auto_locate = true
+
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
@@ -77,6 +98,9 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1" ]
 app_icon_color = "on_surface"
 app_icon_colorize = true
 font_family = "JetBrainsMono Nerd Font Propo"
+
+    [shell.panel]
+    open_near_click_control_center = false
 
 [theme]
 builtin = "Catppuccin"
