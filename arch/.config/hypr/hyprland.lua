@@ -309,6 +309,7 @@ hl.bind(mainMod .. " + ALT + return",   hl.dsp.window.fullscreen({ mode = "fulls
 hl.bind("Print",                        hl.dsp.exec_cmd("grim -g \"$(slurp)\" " .. screenshotDir .. "/$(date +%Y-%m-%d_%H-%M-%S).png"))
 
 -- MacOS-like shortcuts
+hl.bind("SUPER + A",         send_shortcut("CTRL", "A"))
 hl.bind("SUPER + C",         send_shortcut("CTRL", "Insert"))
 hl.bind("SUPER + V",         send_shortcut("SHIFT", "Insert"))
 hl.bind("SUPER + X",         send_shortcut("CTRL", "X"))
