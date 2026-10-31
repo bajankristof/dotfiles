@@ -24,6 +24,7 @@ return {
         "proto",
         "ruby",
         "scss",
+        "svelte",
         "sql",
         "terraform",
         "tsx",
