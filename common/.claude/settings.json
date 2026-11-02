@@ -1,0 +1,51 @@
+{
+  "theme": "dark",
+  "model": "opus",
+  "notifications": true,
+  "outputStyle": "concise",
+  "respectGitignore": true,
+  "disableAllHooks": true,
+  "permissions": {
+    "disableBypassPermissionsMode": "disable",
+    "blockReadsOutsideWorkingDirectories": true,
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "allowUnsandboxedCommands": false,
+    "credentials": {
+      "files": [
+        { "path": "~/.aws", "mode": "deny" },
+        { "path": "~/.config/gh", "mode": "deny" },
+        { "path": "~/.docker/config.json", "mode": "deny" },
+        { "path": "~/.mcp-auth", "mode": "deny" },
+        { "path": "~/.ssh", "mode": "deny" },
+        { "path": "~/.terraform.d", "mode": "deny" },
+        { "path": "~/.zsh.d", "mode": "deny" }
+      ],
+      "envVars": [
+        { "name": "AWS_ACCESS_KEY_ID", "mode": "deny" },
+        { "name": "AWS_SECRET_ACCESS_KEY", "mode": "deny" },
+        { "name": "AWS_SESSION_TOKEN", "mode": "deny" }
+      ]
+    },
+    "filesystem": {
+      "denyRead": ["~/**/.env", "~/**/.env.*"]
+    },
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "*.github.com",
+        "*.githubusercontent.com",
+        "registry.npmjs.org",
+        "proxy.golang.org",
+        "sum.golang.org"
+      ]
+    }
+  },
+  "syncClaudeAiPlugins": false,
+  "syncClaudeAiSkills": false
+}
