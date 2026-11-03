@@ -1,51 +1,47 @@
 {
-  "theme": "dark",
   "model": "opus",
   "notifications": true,
   "outputStyle": "concise",
-  "respectGitignore": true,
-  "disableAllHooks": true,
   "permissions": {
-    "disableBypassPermissionsMode": "disable",
-    "blockReadsOutsideWorkingDirectories": true,
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(git branch -D *)",
+      "Bash(git stash drop *)",
+      "Bash(git stash clear)",
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh release create *)",
+      "Bash(gh workflow run *)",
+      "Bash(docker *)"
+    ],
     "deny": [
       "Read(**/.env)",
-      "Read(**/.env.*)"
-    ]
+      "Read(**/.env.*)",
+      "Read(!.env.example)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.docker/**)",
+      "Read(~/.mcp-auth/**)",
+      "Read(~/.terraform.d/**)",
+      "Read(~/.zsh.d/**)",
+      "Bash(op *)",
+      "Bash(security *)",
+      "Bash(gh auth token *)",
+      "Bash(sudo *)"
+    ],
+    "disableBypassPermissionsMode": "disable"
   },
-  "sandbox": {
-    "enabled": true,
-    "allowUnsandboxedCommands": false,
-    "credentials": {
-      "files": [
-        { "path": "~/.aws", "mode": "deny" },
-        { "path": "~/.config/gh", "mode": "deny" },
-        { "path": "~/.docker/config.json", "mode": "deny" },
-        { "path": "~/.mcp-auth", "mode": "deny" },
-        { "path": "~/.ssh", "mode": "deny" },
-        { "path": "~/.terraform.d", "mode": "deny" },
-        { "path": "~/.zsh.d", "mode": "deny" }
-      ],
-      "envVars": [
-        { "name": "AWS_ACCESS_KEY_ID", "mode": "deny" },
-        { "name": "AWS_SECRET_ACCESS_KEY", "mode": "deny" },
-        { "name": "AWS_SESSION_TOKEN", "mode": "deny" }
-      ]
-    },
-    "filesystem": {
-      "denyRead": ["~/**/.env", "~/**/.env.*"]
-    },
-    "network": {
-      "allowedDomains": [
-        "github.com",
-        "*.github.com",
-        "*.githubusercontent.com",
-        "registry.npmjs.org",
-        "proxy.golang.org",
-        "sum.golang.org"
-      ]
-    }
+  "respectGitignore": true,
+  "statusLine": {
+    "command": "~/.claude/statusline",
+    "type": "command"
   },
   "syncClaudeAiPlugins": false,
-  "syncClaudeAiSkills": false
+  "syncClaudeAiSkills": false,
+  "theme": "dark"
 }

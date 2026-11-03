@@ -1,0 +1,65 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+reset=$'\033[0m'
+bold=$'\033[1m'
+muted=$'\033[90m'
+green=$'\033[32m'
+yellow=$'\033[33m'
+red=$'\033[31m'
+
+pct() {
+  local p="$1"
+  local color="$green"
+
+  if (( 10#$p < 50 )); then
+    color="$green"
+  elif (( 10#$p < 90 )); then
+    color="$yellow"
+  else
+    color="$red"
+  fi
+
+  print -n "${bold}${color}${p}%${reset}"
+}
+
+data="$(jq -r '
+  [
+    (.model.display_name // "Claude"),
+    (.effort.level // "–"),
+    (.context_window.used_percentage // 0),
+    (.context_window.total_input_tokens // 0),
+    (.context_window.context_window_size // 0),
+    (.rate_limits.five_hour.used_percentage // "–"),
+    (.rate_limits.seven_day.used_percentage // "–")
+  ] | @tsv
+' <<<"$(cat)")"
+
+IFS=$'\t' read -r model effort ctx_pct ctx_used ctx_max five_hour_pct seven_day_pct <<<"$data"
+
+if [[ "$five_hour_pct" == "–" ]]; then five_hour_pct=""; fi
+if [[ "$seven_day_pct" == "–" ]]; then seven_day_pct=""; fi
+
+ctx_pct="$(printf '%.0f' "$ctx_pct")"
+if [[ -n "$five_hour_pct" ]]; then five_hour_pct="$(printf '%.0f' "$five_hour_pct")"; fi
+if [[ -n "$seven_day_pct" ]]; then seven_day_pct="$(printf '%.0f' "$seven_day_pct")"; fi
+
+out="${bold}${model}${reset} ${bold}${yellow}${effort}${reset} ${muted}|${reset} "
+out+="$(pct "$ctx_pct") ${bold}(${ctx_used}/${ctx_max})${reset} ${muted}|${reset} "
+
+if [[ -n "$five_hour_pct" ]]; then
+  out+="${bold}5h${reset} $(pct "$five_hour_pct") "
+else
+  out+="${bold}5h –${reset} "
+fi
+
+out+="${muted}|${reset} "
+
+if [[ -n "$seven_day_pct" ]]; then
+  out+="${bold}7d${reset} $(pct "$seven_day_pct")"
+else
+  out+="${bold}7d –${reset}"
+fi
+
+print -r -- "$out"
