@@ -1,5 +1,5 @@
 [[bindings]]
-exec = "open -a Ghostty"
+exec = "open -a 'Rex Beta'"
 key = ";"
 modifiers = ["cmd"]
 
