@@ -1,8 +1,8 @@
-config_version = 15
+config_version = 16
 
 [bar.default]
 background_opacity = 0.99999997764825821
-border = "surface_variant"
+border = "surface_container"
 capsule = true
 end = [ "group:g2", "bluetooth", "volume", "session" ]
 font_family = "JetBrainsMono Nerd Font Propo"
@@ -19,7 +19,7 @@ widget_spacing = 8
     accordion_direction = "end"
     border_width = 1.0
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g1"
     members = [ "media", "audio_visualizer" ]
     opacity = 1.0
@@ -30,7 +30,7 @@ widget_spacing = 8
     accordion_direction = "end"
     border_width = 1.0
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g2"
     members = [ "tray", "notifications", "clipboard" ]
     opacity = 1.0
@@ -79,7 +79,7 @@ widget_order = [ "lockscreen-login-box@WAYLAND-1", "lockscreen-login-box@FALLBAC
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -107,7 +107,7 @@ widget_order = [ "lockscreen-login-box@WAYLAND-1", "lockscreen-login-box@FALLBAC
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -135,7 +135,7 @@ widget_order = [ "lockscreen-login-box@WAYLAND-1", "lockscreen-login-box@FALLBAC
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@WAYLAND-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false

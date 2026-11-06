@@ -109,7 +109,6 @@ export AUR_PACKAGES=(
   opencode-beta
   protonplus
   vicinae-bin
-  visual-studio-code-bin
   xpadneo-dkms
   zenergy-dkms-git
 )
