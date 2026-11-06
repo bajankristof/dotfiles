@@ -24,6 +24,26 @@ pct() {
   print -n "${bold}${color}${p}%${reset}"
 }
 
+countdown() {
+  local resets_at="$1" now left d h m
+  (( resets_at > 0 )) || return 0
+  now=$(date +%s)
+  left=$(( resets_at - now ))
+  (( left > 0 )) || return 0
+
+  d=$(( left / 86400 ))
+  h=$(( (left % 86400) / 3600 ))
+  m=$(( (left % 3600) / 60 ))
+
+  if (( d > 0 )); then
+    print -n "${d}d ${h}h"
+  elif (( h > 0 )); then
+    print -n "${h}h ${m}m"
+  else
+    print -n "${m}m"
+  fi
+}
+
 data="$(jq -r '
   [
     (.model.display_name // "Claude"),
@@ -32,11 +52,13 @@ data="$(jq -r '
     (.context_window.total_input_tokens // 0),
     (.context_window.context_window_size // 0),
     (.rate_limits.five_hour.used_percentage // "–"),
-    (.rate_limits.seven_day.used_percentage // "–")
+    (.rate_limits.five_hour.resets_at // 0),
+    (.rate_limits.seven_day.used_percentage // "–"),
+    (.rate_limits.seven_day.resets_at // 0)
   ] | @tsv
 ' <<<"$(cat)")"
 
-IFS=$'\t' read -r model effort ctx_pct ctx_used ctx_max five_hour_pct seven_day_pct <<<"$data"
+IFS=$'\t' read -r model effort ctx_pct ctx_used ctx_max five_hour_pct five_hour_resets_at seven_day_pct seven_day_resets_at <<<"$data"
 
 if [[ "$five_hour_pct" == "–" ]]; then five_hour_pct=""; fi
 if [[ "$seven_day_pct" == "–" ]]; then seven_day_pct=""; fi
@@ -48,16 +70,25 @@ if [[ -n "$seven_day_pct" ]]; then seven_day_pct="$(printf '%.0f' "$seven_day_pc
 out="${bold}${model}${reset} ${bold}${yellow}${effort}${reset} ${muted}|${reset} "
 out+="$(pct "$ctx_pct") ${bold}(${ctx_used}/${ctx_max})${reset} ${muted}|${reset} "
 
+five_hour_resets_in="$(countdown "$five_hour_resets_at")"
+seven_hour_resets_in="$(countdown "$seven_day_resets_at")"
+
 if [[ -n "$five_hour_pct" ]]; then
-  out+="${bold}5h${reset} $(pct "$five_hour_pct") "
+  out+="${bold}5h${reset} $(pct "$five_hour_pct")"
+  if [[ -n "$five_hour_resets_in" ]]; then
+    out+=" ${muted}${five_hour_resets_in}${reset}"
+  fi
 else
-  out+="${bold}5h –${reset} "
+  out+="${bold}5h –${reset}"
 fi
 
-out+="${muted}|${reset} "
+out+=" ${muted}|${reset} "
 
 if [[ -n "$seven_day_pct" ]]; then
   out+="${bold}7d${reset} $(pct "$seven_day_pct")"
+  if [[ -n "$seven_hour_resets_in" ]]; then
+    out+=" ${muted}${seven_hour_resets_in}${reset}"
+  fi
 else
   out+="${bold}7d –${reset}"
 fi

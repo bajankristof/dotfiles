@@ -1,23 +1,8 @@
 {
-  "model": "opus",
-  "notifications": true,
-  "outputStyle": "concise",
+  "respectGitignore": true,
+  "syncClaudeAiSkills": false,
+  "syncClaudeAiPlugins": false,
   "permissions": {
-    "ask": [
-      "Bash(git push *)",
-      "Bash(git reset --hard *)",
-      "Bash(git clean *)",
-      "Bash(git branch -D *)",
-      "Bash(git stash drop *)",
-      "Bash(git stash clear)",
-      "Bash(rm -rf *)",
-      "Bash(rm -fr *)",
-      "Bash(gh pr create *)",
-      "Bash(gh pr merge *)",
-      "Bash(gh release create *)",
-      "Bash(gh workflow run *)",
-      "Bash(docker *)"
-    ],
     "deny": [
       "Read(**/.env)",
       "Read(**/.env.*)",
@@ -34,14 +19,29 @@
       "Bash(gh auth token *)",
       "Bash(sudo *)"
     ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(git branch -D *)",
+      "Bash(git stash drop *)",
+      "Bash(git stash clear)",
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh release create *)",
+      "Bash(gh workflow run *)",
+      "Bash(docker *)"
+    ],
     "disableBypassPermissionsMode": "disable"
   },
-  "respectGitignore": true,
+  "model": "opus",
   "statusLine": {
-    "command": "~/.claude/statusline",
-    "type": "command"
+    "type": "command",
+    "command": "~/.claude/statusline"
   },
-  "syncClaudeAiPlugins": false,
-  "syncClaudeAiSkills": false,
-  "theme": "dark"
+  "outputStyle": "concise",
+  "theme": "dark",
+  "notifications": true
 }
