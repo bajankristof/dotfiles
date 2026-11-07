@@ -68,7 +68,7 @@ if [[ -n "$five_hour_pct" ]]; then five_hour_pct="$(printf '%.0f' "$five_hour_pc
 if [[ -n "$seven_day_pct" ]]; then seven_day_pct="$(printf '%.0f' "$seven_day_pct")"; fi
 
 out="${bold}${model}${reset} ${bold}${yellow}${effort}${reset} ${muted}|${reset} "
-out+="$(pct "$ctx_pct") ${bold}(${ctx_used}/${ctx_max})${reset} ${muted}|${reset} "
+out+="${bold}ctx${reset} $(pct "$ctx_pct") ${muted}(${ctx_used}/${ctx_max})${reset} ${muted}|${reset} "
 
 five_hour_resets_in="$(countdown "$five_hour_resets_at")"
 seven_hour_resets_in="$(countdown "$seven_day_resets_at")"
@@ -76,7 +76,7 @@ seven_hour_resets_in="$(countdown "$seven_day_resets_at")"
 if [[ -n "$five_hour_pct" ]]; then
   out+="${bold}5h${reset} $(pct "$five_hour_pct")"
   if [[ -n "$five_hour_resets_in" ]]; then
-    out+=" ${muted}${five_hour_resets_in}${reset}"
+    out+=" ${muted}(${five_hour_resets_in})${reset}"
   fi
 else
   out+="${bold}5h –${reset}"
@@ -87,7 +87,7 @@ out+=" ${muted}|${reset} "
 if [[ -n "$seven_day_pct" ]]; then
   out+="${bold}7d${reset} $(pct "$seven_day_pct")"
   if [[ -n "$seven_hour_resets_in" ]]; then
-    out+=" ${muted}${seven_hour_resets_in}${reset}"
+    out+=" ${muted}(${seven_hour_resets_in})${reset}"
   fi
 else
   out+="${bold}7d –${reset}"
