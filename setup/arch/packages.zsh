@@ -108,6 +108,7 @@ export AUR_PACKAGES=(
   # TODO: Use mise once V2 goes GA
   opencode-beta
   protonplus
+  unity-cli-bin
   vicinae-bin
   xpadneo-dkms
   zenergy-dkms-git
