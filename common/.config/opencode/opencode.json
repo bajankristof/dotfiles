@@ -76,7 +76,8 @@
     { "action": "webfetch", "resource": "*", "effect": "ask" },
     { "action": "read", "resource": "*.env", "effect": "deny" },
     { "action": "read", "resource": "*.env.*", "effect": "deny" },
-    { "action": "read", "resource": "*.env.example", "effect": "allow" }
+    { "action": "read", "resource": "*.env.example", "effect": "allow" },
+    { "action": "read", "resource": "*.mise.toml", "effect": "deny" }
   ],
   "policies": [
     { "action": "integration.connect", "resource": "*", "effect": "deny" },
@@ -86,6 +87,7 @@
     { "action": "tool.use", "resource": "read:*.env", "effect": "deny" },
     { "action": "tool.use", "resource": "read:*.env.*", "effect": "deny" },
     { "action": "tool.use", "resource": "read:*.env.example", "effect": "allow" },
+    { "action": "tool.use", "resource": "read:*.mise.toml", "effect": "deny" },
     { "action": "plugin.use", "resource": "*", "effect": "deny" }
   ]
 }
