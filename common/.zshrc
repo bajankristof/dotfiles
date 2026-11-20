@@ -7,6 +7,7 @@ export HISTSIZE='10000'
 export SAVEHIST='10000'
 
 autoload -Uz compinit && compinit
+autoload -Uz add-zsh-hook
 
 setopt APPEND_HISTORY
 setopt AUTO_CD
@@ -24,6 +25,13 @@ setopt SHARE_HISTORY
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' special-dirs true
+
+alias nohist=' '
+function zsh-ignore-nohist() {
+  [[ $1 =~ '^[[:space:]]*nohist([[:space:]]|$)' ]] && return 1
+  return 0
+}
+add-zsh-hook zshaddhistory zsh-ignore-nohist
 
 source $HOME/.config/zsh/brew.zsh
 for entry in $HOME/.config/zsh/^brew.zsh; do
