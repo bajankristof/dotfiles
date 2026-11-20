@@ -43,6 +43,6 @@
     "command": "~/.claude/statusline"
   },
   "outputStyle": "concise",
-  "theme": "dark",
+  "theme": "custom:catppuccin-macchiato",
   "notifications": true
 }
